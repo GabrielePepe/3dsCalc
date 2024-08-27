@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Calcolatrice Semplice in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0077cc;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="number"],
+        select {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0077cc;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #005fa3;
+        }
+
+        #risultato {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Calcolatrice Semplice</h2>
+<form>
+    <input type="number" id="numero1" placeholder="Inserisci il primo numero" required>
+    <select id="operazione">
+        <option value="add">+</option>
+        <option value="sub">-</option>
+        <option value="mul">*</option>
+        <option value="div">/</option>
+    </select>
+    <input type="number" id="numero2" placeholder="Inserisci il secondo numero" required>
+    <button type="button" onclick="calcola()">Calcola</button>
+</form>
+
+<h3 id="risultato">Risultato: </h3>
+
+<script>
+    function calcola() {
+        var numero1 = parseFloat(document.getElementById('numero1').value);
+        var numero2 = parseFloat(document.getElementById('numero2').value);
+        var operazione = document.getElementById('operazione').value;
+        var risultato;
+
+        switch (operazione) {
+            case 'add':
+                risultato = numero1 + numero2;
+                break;
+            case 'sub':
+                risultato = numero1 - numero2;
+                break;
+            case 'mul':
+                risultato = numero1 * numero2;
+                break;
+            case 'div':
+                if (numero2 !== 0) {
+                    risultato = numero1 / numero2;
+                } else {
+                    risultato = "Errore: Divisione per zero non permessa.";
+                }
+                break;
+            default:
+                risultato = "Operazione non valida.";
+        }
+
+        document.getElementById('risultato').innerText = "Risultato: " + risultato;
+    }
+</script>
+
+</body>
+</html>
